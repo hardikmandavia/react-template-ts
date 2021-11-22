@@ -1,14 +1,20 @@
 Initialise Project
 
-`npm init --y`
+```
+npm init --y
+```
 
 Add React
 
-`yarn add react react-dom`
+```
+yarn add react react-dom
+```
 
 Add TypeScript
 
-`yarn add -D typescript @types/react @types/react-dom`
+```
+yarn add -D typescript @types/react @types/react-dom
+```
 
 Add `tsconfig.json` to root of the project and copy:
 
@@ -59,7 +65,9 @@ ReactDOM.render(<App />, document.getElementById('root'));
 
 Add Babel packages:
 
-`yarn add -D @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/plugin-transform-runtime`
+```
+yarn add -D @babel/core @babel/preset-env @babel/preset-react @babel/preset-typescript @babel/plugin-transform-runtime
+```
 
 Add `.babelrc` file to root with:
 
@@ -89,8 +97,12 @@ Add `.babelrc` file to root with:
 
 Add Webpack packages:
 
-`yarn add -D webpack webpack-cli webpack-dev-server html-webpack-plugin`
+```
+yarn add -D webpack webpack-cli webpack-dev-server html-webpack-plugin
+```
 
 Add `babel-loader`
 
-`yarn add -D babel-loader`
+```
+yarn add -D babel-loader
+```
