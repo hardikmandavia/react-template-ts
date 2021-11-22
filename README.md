@@ -346,3 +346,21 @@ scripts: {
 }
 ```
 
+(For `prettier` support)
+
+Add `prettier` packages:
+
+```
+yarn add -D prettier eslint-config-prettier eslint-plugin-prettier
+```
+
+Add format script:
+
+```
+scripts: {
+  ...
+  "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
+}
+```
+
+
