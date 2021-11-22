@@ -1,14 +1,21 @@
-import './styles.css';
-import LOGO from './assets/logo.svg';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import Home from './components/Home';
+import Layout from './components/Layout';
 
 export const App = () => {
   return (
-    <>
-      <h1>
-        React TypeScript Webpack Starter Template - {process.env.NODE_ENV}{' '}
-        {process.env.name}
-      </h1>
-      <img src={LOGO} alt="React Logo" width="300" height="200" />
-    </>
+    <Layout>
+      <Router>
+        <Switch>
+          <Route path="/test">
+            <div>This is a test page</div>
+          </Route>
+          <Route path="/" exact>
+            <Home message="Hello World!" />
+          </Route>
+        </Switch>
+      </Router>
+    </Layout>
   );
 };

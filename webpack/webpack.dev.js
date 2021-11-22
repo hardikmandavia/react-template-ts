@@ -1,4 +1,4 @@
-const webpack = require('webpack');
+// const webpack = require('webpack');
 
 module.exports = {
   mode: 'development',
@@ -8,8 +8,8 @@ module.exports = {
   },
   devtool: 'cheap-module-source-map',
   plugins: [
-    new webpack.DefinePlugin({
-      'process.env.name': JSON.stringify('Development'),
-    })
+    // new webpack.DefinePlugin({
+    //   'process.env.name': JSON.stringify('Development'),
+    // })
   ]
 }
