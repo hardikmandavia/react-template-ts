@@ -195,17 +195,17 @@ declare module '*.png'
 Add rule to `webpack.config.js`:
 
 module.exports = {
-  ...
-  module: {
-    ...
-    rules: [
-      ...
-      {
-        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-        type: 'asset/resource',
-      },
-    ]
-  }
+...
+module: {
+...
+rules: [
+...
+{
+test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+type: 'asset/resource',
+},
+]
+}
 }
 
 (For inline asset support)
@@ -219,17 +219,17 @@ declare module '*.svg'
 Add rule to `webpack.config.js`:
 
 module.exports = {
-  ...
-  module: {
-    ...
-    rules: [
-      ...
-      {
-        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
-        type: 'asset/inline',
-      },
-    ]
-  }
+...
+module: {
+...
+rules: [
+...
+{
+test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+type: 'asset/inline',
+},
+]
+}
 }
 
 (For multiple environment support)
@@ -290,6 +290,59 @@ scripts: {
 }
 ```
 
+(For linting support)
 
+Add linting packages:
 
+```
+yarn add -D eslint eslint-plugin-react eslint-plugin-react-hooks @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-import eslint-plugin-jsx-a11y
+```
+
+Add `.eslintrc.js` to root:
+
+```
+module.exports = {
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 2020,
+    sourceType: 'module',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
+  extends: [
+    'plugin:react/recommended',
+    'plugin:react-hooks/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:import/errors',
+    'plugin:import/warnings',
+    'plugin:import/typescript',
+    'plugin:jsx-a11y/recommended',
+    'plugin:eslint-comments/recommended',
+    'prettier/@typescript-eslint',
+    'plugin:prettier/recommended',
+  ],
+  rules: {
+    'no-unused-vars': 'off',
+    '@typescript-eslint/no-unused-vars': ['error'],
+    '@typescript-eslint/no-var-requires': 'off',
+    'react/prop-types': 'off',
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+  },
+}
+
+```
+
+Add lint script:
+
+```
+scripts: {
+  ...
+  "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\""
+}
+```
 
