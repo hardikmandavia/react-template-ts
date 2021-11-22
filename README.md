@@ -157,3 +157,79 @@ Add `start` script to `package.json`:
   ...
 }
 ```
+
+(For css support):
+
+Add style loaders:
+
+```
+yarn add -D css-loader style-loader
+```
+
+In `webpack.config.js`:
+
+```
+module.exports = {
+  ...
+  module: {
+    ...
+    rules: [
+      ...
+      {
+        test: /\.css/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ]
+  }
+}
+```
+
+(for image support)
+
+Add declaration in declaration file (`./src/declarations.d.ts`) for image extension e.g. `png`:
+
+```
+declare module '*.png'
+```
+
+Add rule to `webpack.config.js`:
+
+module.exports = {
+  ...
+  module: {
+    ...
+    rules: [
+      ...
+      {
+        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+        type: 'asset/resource',
+      },
+    ]
+  }
+}
+
+(for inline asset support)
+
+Add declaration in declaration file for extension e.g. `svg`:
+
+```
+declare module '*.svg'
+```
+
+Add rule to `webpack.config.js`:
+
+module.exports = {
+  ...
+  module: {
+    ...
+    rules: [
+      ...
+      {
+        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+        type: 'asset/inline',
+      },
+    ]
+  }
+}
+
+
