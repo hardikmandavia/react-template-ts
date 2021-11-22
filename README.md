@@ -208,7 +208,7 @@ module.exports = {
   }
 }
 
-(for inline asset support)
+(For inline asset support)
 
 Add declaration in declaration file for extension e.g. `svg`:
 
@@ -231,5 +231,65 @@ module.exports = {
     ]
   }
 }
+
+(For multiple environment support)
+
+Rename `webpack.config.js` to `webpack.common.js`
+
+Add `webpack.dev.js`, `webpack.production.js` and a new `webpack.config.js` files to `webpack` folder.
+
+In `webpack.dev.js`:
+
+```
+module.exports = {
+  mode: 'development',
+  devtool: 'cheap-module-source-map',
+}
+
+```
+
+In `webpack.prod.js`:
+
+```
+module.exports = {
+  mode: 'production',
+  devtool: 'source-map',
+}
+
+```
+
+Add `webpack-merge` package:
+
+```
+yarn add -D webpack-merge
+```
+
+In `webpack.config.js`:
+
+```
+const { merge } = require('webpack-merge');
+const commonConfig = require('./webpack.common.js');
+
+module.exports = (envVars) => {
+  const { env } = envVars;
+  const envConfig = require(`./webpack.${env}.js`);
+  const config = merge(commonConfig, envConfig);
+  return config;
+};
+
+```
+
+In `package.json`, update `start` script and add `build` script:
+
+```
+...
+scripts: {
+  ...
+  "start": "webpack serve --config webpack/webpack.config.js --env env=dev --open",
+  "build": "webpack --config webpack/webpack.config.js --env env=prod --open",
+}
+```
+
+
 
 
