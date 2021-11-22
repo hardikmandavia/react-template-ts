@@ -82,14 +82,6 @@ Add `.babelrc` file to root with:
       }
     ],
     "@babel/preset-typescript"
-  ],
-  "plugins": [
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        "regenerator": true
-      }
-    ]
   ]
 }
 
@@ -295,7 +287,7 @@ scripts: {
 Add linting packages:
 
 ```
-yarn add -D eslint eslint-plugin-react eslint-plugin-react-hooks @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-import eslint-plugin-jsx-a11y
+yarn add -D eslint eslint-plugin-react eslint-plugin-react-hooks @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-eslint-comments
 ```
 
 Add `.eslintrc.js` to root:
@@ -390,4 +382,64 @@ In `package.json` add:
   }
 ```
 
+(For `await/async` support)
 
+Add packages:
+
+```
+yarn add -D @babel/runtime @babel/plugin-transform-runtime
+```
+
+In `.babelrc` add:
+
+```
+...
+"plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "regenerator": true
+      }
+    ]
+  ]
+```
+
+(For copy webpack support)
+
+Add `copy-webpack-plugin` package:
+
+```
+yarn add -D copy-webpack-plugin
+```
+
+In `webpack.common.js` add:
+
+```
+...
+plugins: [
+  ...
+  new CopyPlugin({
+      patterns: [
+        { from: "source", to: "dest"}
+      ]
+    })
+]
+```
+
+(For bundle analyzer)
+
+Add package:
+
+```
+yarn add -D webpack-bundle-analyzer
+```
+
+In `webpack.prod.js` add:
+
+```
+...
+plugins: [
+  ...
+  new BundleAnalyzerPlugin()
+]
+```

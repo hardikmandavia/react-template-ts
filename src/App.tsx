@@ -1,5 +1,5 @@
 import './styles.css';
-import LOGO from './logo.svg';
+import LOGO from './assets/logo.svg';
 
 export const App = () => {
   return (
