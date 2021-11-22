@@ -363,4 +363,31 @@ scripts: {
 }
 ```
 
+(For Husky support)
+
+Add husky packages:
+
+```
+yarn add -D husky@4 lint-staged
+```
+
+In `package.json` add:
+
+```
+...
+"lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json}": [
+      "eslint --fix"
+    ],
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+```
+
 
