@@ -1,7 +1,9 @@
+import { ReactNode } from 'react';
+
 import { Container } from './Layout.styled';
 
 interface Props {
-  children?: React.ReactElement;
+  children?: ReactNode;
 }
 
 const Layout = ({ children }: Props) => <Container>{children}</Container>;
